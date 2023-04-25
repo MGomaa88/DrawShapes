@@ -1,14 +1,19 @@
 // DrawShapes.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
+/**********************Includes******************/
 #include "shape.h"
 #include "logics.h"
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
 using namespace std;
+
+/*****************Functions*********************/
 int main()
 {
 	char answer;
 	bool checkMe = true;
+
 	while (checkMe)
 	{
 
@@ -20,9 +25,9 @@ int main()
 	cin >> input;
 
 	logics log(input);
-	log.userShape();
 	cout<< endl;
-	cout << "End drawing !!" << endl;
+	log.userShape();
+	cout << endl;
 	cout << "Do you wanna draw more?!\nPress (y) or (n). " << endl;
 	cin >> answer;
 

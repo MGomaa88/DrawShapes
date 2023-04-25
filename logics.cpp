@@ -1,8 +1,4 @@
 #include "logics.h"
-#include "shape.h"
-#include "rectangle.h"
-#include "triangle.h"
-#include "circle.h"
 #include <iostream>
 
 using namespace std;
@@ -30,7 +26,7 @@ void logics::userShape()
 	{
 		circle cir;
 		cir.drawCircle();
-		cout << endl;
+	//	cout << endl;
 
 	}
 	else 

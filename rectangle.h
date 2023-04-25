@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <Windows.h>
+#include <iostream>
 
 class rectangle 
 {

@@ -8,11 +8,10 @@ triangle::triangle()
 {
 	 
 	// this is a right-angled triangle
-	std::cout << "Enter the hight and the width of the triangle" << endl;
-	cin >> mHight>> mWidth;
+	std::cout << "Enter the hight of the triangle" << endl;
+	cin >> mHight;
 	 x1 = 15;
 	 y1 = 15;
-	 x2 = x1 + mWidth;
 	 y2 = y1 + mHight;
 }
 
@@ -31,12 +30,12 @@ void triangle::goTo(int x, int y)
 void triangle::drawTriangle()
 {
 	
-	for (int x = 15; x <= y2; ++x)
+	for (int x = x1; x < y2; ++x)
 	{
-		for (int y = x1; y <= x;++y )
+		for (int y = y1; y <= x;++y )
 		{
 			
-			Sleep(250);
+			Sleep(150);
 		    goTo(y,x);
 		
 		

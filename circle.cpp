@@ -3,76 +3,49 @@
 using namespace std;
 circle::circle()
 {
-	int diameter=0;
-	bool checkMe = true;
-	while (checkMe)
-	{
+	int radius = 0;
 
-	cout << "Enter the diameter of the circle,"
-		"The diameter should be	uneven number!! " << endl;
-	cin >> diameter;
-	if ((diameter % 2) != 0)
-	{
-		mDiameter = diameter;
-		checkMe = false;
-
-	}
-	else
-		cout << "Enter Uneven number!!" << endl;
-	}
+	cout << "Enter the radius of the circle" << endl;
+	cin >> radius;
+	mRadius = radius;
+	
+	
 }
 
 void circle::goTo(int x, int y)
 {
 	COORD coord;
-	coord.X = x+15;
-	coord.Y = y+15;
+	coord.X = x;
+	coord.Y = y;
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	std::cout << "*";
 }
 void circle::drawCircle()
 {
-	int origin = (mDiameter / 2) + 1;
 
-		goTo(origin, origin);
+	// Get the screen buffer information
+	CONSOLE_SCREEN_BUFFER_INFO bufferInfo;
+	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &bufferInfo);
 
-		for (int row = 0; row < mDiameter; row++) 
+	// Calculate the center point
+	int centerX = bufferInfo.dwSize.X / 2;
+	int centerY = bufferInfo.dwSize.Y / 2;
+	
+
+	
+		for (int y = -mRadius; y <= mRadius; y++)
 		{
-			for (int col = 0; col < mDiameter; col++)
+			for (int x = -mRadius; x <= mRadius; x++)
 			{
-				if (col +1==origin && (row == 0 || row == mDiameter -1))
-				{
-					goTo(row, col - 2);
-					goTo(row, col - 1);
-					goTo(row, col);
-					goTo(row, col + 1);
-					goTo(row, col + 2);
-					
-				}
+				if (x * x + y * y <= mRadius * mRadius)
 
-				else if (row +1 == origin && (col == 0 || col == mDiameter-1))
-				{
-					goTo(row -2, col );
-					goTo(row -1, col );
-					goTo(row, col);
-					goTo(row +1, col );
-					goTo(row +2, col );
-
-				}
-				else if (row == col) 
-				{
-
-					if( row % 2 != 0 && row != 5 && row != 7 && col % 2 != 0 && col != 5 && col != 7)
-				{
-					goTo(row , col);
-
-				}
-				}
-
+					goTo(centerX + x, centerY + y);
+				    Sleep(50);
 			}
 		}
-		cout << endl;
 
+
+		
 
 }
